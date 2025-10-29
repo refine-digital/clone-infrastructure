@@ -32,7 +32,7 @@ This toolkit provides three powerful scripts to manage local development infrast
 
 1. Clone this repository:
 ```bash
-git clone https://github.com/yourusername/clone-infrastructure.git
+git clone https://github.com/refine-digital/clone-infrastructure.git
 cd clone-infrastructure
 ```
 
@@ -382,7 +382,7 @@ docker-compose ps
 
 ## Integration with clone-wordpress
 
-This infrastructure is designed to work with the [clone-wordpress](https://github.com/yourusername/clone-wordpress) project:
+This infrastructure is designed to work with the [clone-wordpress](https://github.com/refine-digital/clone-wordpress) project:
 
 ```bash
 # After infrastructure is set up, clone WordPress sites:
@@ -411,8 +411,8 @@ Contributions welcome! Please open an issue or pull request.
 ## Support
 
 For issues and questions:
-- GitHub Issues: https://github.com/yourusername/clone-infrastructure/issues
-- Documentation: https://github.com/yourusername/clone-infrastructure
+- GitHub Issues: https://github.com/refine-digital/clone-infrastructure/issues
+- Documentation: https://github.com/refine-digital/clone-infrastructure
 
 ## Author
 
