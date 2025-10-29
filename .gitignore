@@ -1,0 +1,40 @@
+# Log files
+*.log
+infrastructure-clone-*.log
+
+# Environment files
+.env
+.env.*
+
+# SSH keys
+*.pem
+*.key
+id_*
+
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# Thumbnails
+._*
+
+# System files
+Thumbs.db
+ehthumbs.db
+
+# Temporary files
+*.tmp
+*.temp
+*.swp
+*.swo
+*~
+
+# Editor directories
+.vscode/
+.idea/
+*.sublime-*
+
+# Testing
+test/
+*.test
