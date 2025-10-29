@@ -30,15 +30,51 @@ This toolkit provides three powerful scripts to manage local development infrast
 
 ## Installation
 
-1. Clone this repository:
+### Quick Install (Recommended)
+
+Install scripts to `~/.local/bin` for global CLI access:
+
 ```bash
+# 1. Clone repository
 git clone https://github.com/refine-digital/clone-infrastructure.git
 cd clone-infrastructure
+
+# 2. Run installer
+./install.sh
+
+# 3. Configure PATH (if prompted)
+echo 'export PATH="$HOME/.local/bin:$PATH"' >> ~/.zshrc
+source ~/.zshrc
 ```
 
-2. Make scripts executable:
+After installation, commands are available globally:
+- `clone-infrastructure` - Clone infrastructure
+- `remove-infrastructure` - Remove infrastructure
+- `backup-infrastructure` - Manage backups
+
+### Manual Installation (Alternative)
+
+If you prefer to run scripts from the project directory:
+
 ```bash
-chmod +x clone-infrastructure.sh remove-infrastructure.sh backup-infrastructure.sh
+# 1. Clone repository
+git clone https://github.com/refine-digital/clone-infrastructure.git
+cd clone-infrastructure
+
+# 2. Make scripts executable
+chmod +x *.sh
+```
+
+Then run scripts with `./clone-infrastructure.sh` instead of `clone-infrastructure`.
+
+### Updating
+
+To update to the latest version:
+
+```bash
+cd clone-infrastructure
+git pull
+./install.sh  # Re-run installer to update commands
 ```
 
 ## Usage
@@ -48,13 +84,15 @@ chmod +x clone-infrastructure.sh remove-infrastructure.sh backup-infrastructure.
 Clone production infrastructure to your local machine:
 
 ```bash
-./clone-infrastructure.sh <infrastructure-name> <server-ip>
+clone-infrastructure <infrastructure-name> <server-ip>
 ```
 
 **Example:**
 ```bash
-./clone-infrastructure.sh dev-fi-01 46.62.207.172
+clone-infrastructure dev-fi-01 46.62.207.172
 ```
+
+*Note: If using manual installation, use `./clone-infrastructure.sh` instead*
 
 **What it does:**
 1. Sets up SSH connection with automatic key generation
@@ -73,7 +111,7 @@ Clone production infrastructure to your local machine:
 
 **Re-clone with clean slate:**
 ```bash
-./clone-infrastructure.sh dev-fi-01 46.62.207.172 --clean
+clone-infrastructure dev-fi-01 46.62.207.172 --clean
 ```
 
 ### Remove Infrastructure
@@ -81,25 +119,25 @@ Clone production infrastructure to your local machine:
 Safely remove infrastructure with dependency checking:
 
 ```bash
-./remove-infrastructure.sh <infrastructure-name> [options]
+remove-infrastructure <infrastructure-name> [options]
 ```
 
 **Examples:**
 ```bash
 # Check dependencies and remove
-./remove-infrastructure.sh dev-fi-01
+remove-infrastructure dev-fi-01
 
 # Force removal (skip dependency check)
-./remove-infrastructure.sh dev-fi-01 --force
+remove-infrastructure dev-fi-01 --force
 
 # Keep database and configuration data
-./remove-infrastructure.sh dev-fi-01 --keep-data
+remove-infrastructure dev-fi-01 --keep-data
 
 # Remove SSH config and keys
-./remove-infrastructure.sh dev-fi-01 --remove-ssh
+remove-infrastructure dev-fi-01 --remove-ssh
 
 # Remove everything including SSH
-./remove-infrastructure.sh dev-fi-01 --force --remove-ssh
+remove-infrastructure dev-fi-01 --force --remove-ssh
 ```
 
 **Safety Features:**
@@ -114,14 +152,14 @@ Safely remove infrastructure with dependency checking:
 Manage automated backups with Ofelia scheduling:
 
 ```bash
-./backup-infrastructure.sh <command> <infrastructure-name> [options]
+backup-infrastructure <command> <infrastructure-name> [options]
 ```
 
 **Commands:**
 
 **1. Add Backup Configuration**
 ```bash
-./backup-infrastructure.sh add dev-fi-01 /Volumes/Backup/infrastructure
+backup-infrastructure add dev-fi-01 /Volumes/Backup/infrastructure
 ```
 
 Options:
@@ -130,26 +168,26 @@ Options:
 
 **2. Remove Backup Configuration**
 ```bash
-./backup-infrastructure.sh remove dev-fi-01
+backup-infrastructure remove dev-fi-01
 ```
 
 **3. View Backup Status**
 ```bash
-./backup-infrastructure.sh status dev-fi-01
+backup-infrastructure status dev-fi-01
 ```
 
 **4. Run Manual Backup**
 ```bash
-./backup-infrastructure.sh run dev-fi-01
+backup-infrastructure run dev-fi-01
 
 # Run specific backup type
-./backup-infrastructure.sh run dev-fi-01 --type databases
-./backup-infrastructure.sh run dev-fi-01 --type files
+backup-infrastructure run dev-fi-01 --type databases
+backup-infrastructure run dev-fi-01 --type files
 ```
 
 **5. Update Configuration**
 ```bash
-./backup-infrastructure.sh config dev-fi-01 --db-schedule "@every 2h"
+backup-infrastructure config dev-fi-01 --db-schedule "@every 2h"
 ```
 
 **Backup Details:**
@@ -248,7 +286,7 @@ Previous hash: 051cebc2bfc1...
 Current hash:  a72fe91d3ab2...
 
 Consider re-cloning with --clean flag to apply latest provisioning:
-  ./clone-infrastructure.sh dev-fi-01 46.62.207.172 --clean
+  clone-infrastructure dev-fi-01 46.62.207.172 --clean
 ```
 
 ## Cloudflared Setup (Optional)
@@ -337,7 +375,7 @@ docker network rm wordpress-sites
 docker network rm db-network
 
 # Re-run clone script
-./clone-infrastructure.sh {infrastructure-name} {server-ip}
+clone-infrastructure {infrastructure-name} {server-ip}
 ```
 
 ### Database Connection Issues
@@ -362,16 +400,16 @@ Complete workflow for setting up local development:
 
 ```bash
 # 1. Clone infrastructure
-./clone-infrastructure.sh dev-fi-01 46.62.207.172
+clone-infrastructure dev-fi-01 46.62.207.172
 
 # 2. Add SSH key to server (if prompted)
 ssh-copy-id -i ~/.ssh/id_localdevfi01_digops.pub fly@46.62.207.172
 
 # 3. Re-run to complete setup
-./clone-infrastructure.sh dev-fi-01 46.62.207.172
+clone-infrastructure dev-fi-01 46.62.207.172
 
 # 4. Set up backups
-./backup-infrastructure.sh add dev-fi-01 /Volumes/Backup/infrastructure
+backup-infrastructure add dev-fi-01 /Volumes/Backup/infrastructure
 
 # 5. Verify services
 cd ~/.dev-fi-01
