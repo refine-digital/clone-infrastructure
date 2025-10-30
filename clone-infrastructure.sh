@@ -356,6 +356,16 @@ echo "  docker-compose.yml verified"
 ################################################################################
 echo -e "${YELLOW}[8/8] Starting infrastructure...${NC}"
 
+# Check if Docker is running
+if ! docker info >/dev/null 2>&1; then
+    echo -e "${RED}Error: Docker is not running${NC}"
+    echo ""
+    echo "Please start Docker Desktop and try again."
+    echo ""
+    exit 1
+fi
+echo "  ✓ Docker is running"
+
 cd "${LOCAL_INFRA_DIR}"
 
 # Start infrastructure (excluding cloudflared if not configured)
