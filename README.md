@@ -36,7 +36,7 @@ Install scripts to `~/.local/bin` for global CLI access:
 
 ```bash
 # 1. Clone repository
-git clone https://github.com/refine-digital/clone-infrastructure.git
+git clone https://github.com/refinedigital/clone-infrastructure.git
 cd clone-infrastructure
 
 # 2. Run installer
@@ -58,7 +58,7 @@ If you prefer to run scripts from the project directory:
 
 ```bash
 # 1. Clone repository
-git clone https://github.com/refine-digital/clone-infrastructure.git
+git clone https://github.com/refinedigital/clone-infrastructure.git
 cd clone-infrastructure
 
 # 2. Make scripts executable
@@ -420,7 +420,7 @@ docker-compose ps
 
 ## Integration with clone-wordpress
 
-This infrastructure is designed to work with the [clone-wordpress](https://github.com/refine-digital/clone-wordpress) project:
+This infrastructure is designed to work with the [clone-wordpress](https://github.com/refinedigital/clone-wordpress) project:
 
 ```bash
 # After infrastructure is set up, clone WordPress sites:
@@ -449,8 +449,8 @@ Contributions welcome! Please open an issue or pull request.
 ## Support
 
 For issues and questions:
-- GitHub Issues: https://github.com/refine-digital/clone-infrastructure/issues
-- Documentation: https://github.com/refine-digital/clone-infrastructure
+- GitHub Issues: https://github.com/refinedigital/clone-infrastructure/issues
+- Documentation: https://github.com/refinedigital/clone-infrastructure
 
 ## Author
 

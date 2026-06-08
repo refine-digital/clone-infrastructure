@@ -124,7 +124,7 @@ echo "  backup-infrastructure add dev-fi-01 /Volumes/Backup"
 echo "  remove-infrastructure dev-fi-01"
 echo ""
 echo "For more information:"
-echo "  https://github.com/refine-digital/clone-infrastructure"
+echo "  https://github.com/refinedigital/clone-infrastructure"
 echo ""
 
 # Check if PATH was modified
